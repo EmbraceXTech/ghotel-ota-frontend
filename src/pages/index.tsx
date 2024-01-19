@@ -1,4 +1,5 @@
 import PropertyCard from "@/components/property/PropertyCard";
+import FilterList from "@/components/search/FilterList";
 import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -18,6 +19,7 @@ export default function Home() {
       <div>GHOTEL OTA</div>
       <div className="text-2xl font-semibold">Special Properties</div>
       <PropertyCard {...mockHotel} />
+      <FilterList />
     </main>
   );
 }
