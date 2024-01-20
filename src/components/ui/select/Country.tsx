@@ -1,5 +1,5 @@
 import { Select, SelectItem } from "@nextui-org/react";
-import { LocationIcon } from "../Icons/Location";
+import { LocationIcon } from "../../Icons/Location";
 
 const COUNTRY_LIST = [
   {

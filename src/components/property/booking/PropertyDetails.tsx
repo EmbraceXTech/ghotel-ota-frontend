@@ -1,12 +1,21 @@
 import { Image } from "@nextui-org/react";
 
 import { CounterTopIcon } from "@/components/Icons/facilities";
+import RatingSet from "@/components/ui/RatingSet";
+import { toDashCase } from "@/utils/string.util";
 
-export default function PropertyDetails() {
-  const name = "Sri Panwa";
-  const propertyType = "Luxury Villas";
-  const star = 5;
-  const location = "Cherng Talay, Thalang District, Phuket, Thailand";
+interface PropertyDetailsProps {
+  name?: string;
+  propertyType?: string;
+  rating?: number;
+  location?: string;
+  // facilities: {
+  //   icons: React.ReactNode;
+  //   label: string;
+  // }[];
+}
+
+export default function PropertyDetails({ name, propertyType, rating, location }: PropertyDetailsProps) {
   const facilities = [
     {
       icons: <CounterTopIcon />,
@@ -21,12 +30,12 @@ export default function PropertyDetails() {
         height={200}
         alt={name}
         className="w-full object-cover rounded-md"
-        src="/hotel/1.jpg"
+        src={`/hotel/${toDashCase(name ?? '')}.jpg`}
       />
       <div>
         <div className="flex space-x-1">
           <div className="text-xs">{propertyType}</div>
-          <div>star</div>
+          <RatingSet ratings={rating ?? 0} />
         </div>
         <div className="text-xl font-bold">{name}</div>
         <div className="text-sm my-3">{location}</div>

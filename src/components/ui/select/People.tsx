@@ -1,4 +1,4 @@
-import { PeopleIcon } from "../Icons/People";
+import { PeopleIcon } from "../../Icons/People";
 
 export default function PeopleSelect() {
   const label = "Guests";

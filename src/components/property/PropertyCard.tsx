@@ -9,6 +9,8 @@ import {
 import { StarIcon } from "../Icons/Star";
 import { useRouter } from "next/router";
 import { toDashCase } from "@/utils/string.util";
+import { usePropertyFilter } from "@/stores/propertyFilter.store";
+import { formatDateWithOutTime } from "@/utils/date.util";
 
 interface PropertyCardProps {
   name: string;
@@ -26,12 +28,25 @@ export default function PropertyCard({
   price,
 }: PropertyCardProps) {
   const router = useRouter();
+  const { getFilter } = usePropertyFilter();
+
+  const filterPath = () => {
+    const { checkIn, checkOut, guests, rooms } = getFilter();
+    return `?checkIn=${formatDateWithOutTime(
+      checkIn || new Date()
+    )}&checkOut=${formatDateWithOutTime(
+      checkOut || new Date()
+    )}&guests=${guests}&rooms=${rooms}`;
+  };
+
   return (
     <div>
       <Card
         shadow="sm"
         isPressable
-        onPress={() => router.push(`${router.asPath}/${toDashCase(name)}`)}
+        onPress={() =>
+          router.push(`${router.asPath}/${toDashCase(name)}${filterPath()}`)
+        }
         className="w-[300px]"
       >
         <CardHeader className="overflow-visible p-0">
@@ -41,7 +56,7 @@ export default function PropertyCard({
             width="300px"
             alt={name}
             className="w-full object-cover h-[200px]"
-            src="/hotel/1.jpg"
+            src={`/hotel/${toDashCase(name ?? '')}.jpg`}
           />
         </CardHeader>
         <CardBody className="">
