@@ -13,6 +13,7 @@ const config: Config = {
       colors: {
         brand: "#B497EE",
         "brand-sec": "#44297E",
+        tertiary: "#A3A3A3",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

@@ -1,4 +1,4 @@
-export const CounterTopIcon = () => {
+export default function CounterTopIcon() {
   return (
     <svg
       width="16"
@@ -22,4 +22,4 @@ export const CounterTopIcon = () => {
       />
     </svg>
   );
-};
+}

@@ -8,7 +8,7 @@ import PropertyDetails from "@/components/property/booking/PropertyDetails";
 export default function HotelPage() {
   return (
     <BackgroundLayout>
-      <div className="grid grid-cols-3 gap-4 px-32">
+      <div className="grid grid-cols-3 gap-4 px-32 -mt-20">
         <div className="col-span-2">
           <PropertyDetails />
         </div>
