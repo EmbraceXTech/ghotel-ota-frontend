@@ -1,8 +1,7 @@
+import LandingProgress from "@/components/landings/LandingProgress";
+import LandingHeader from "@/components/landings/LandingHeader";
 import PropertyCard from "@/components/property/PropertyCard";
 import FilterList from "@/components/search/FilterList";
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const mockHotel = {
@@ -13,13 +12,20 @@ export default function Home() {
     price: 9135,
   };
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      <div>GHOTEL OTA</div>
-      <div className="text-2xl font-semibold">Special Properties</div>
-      <PropertyCard {...mockHotel} />
-      <FilterList />
-    </main>
+    <div>
+      <LandingHeader />
+      <div className="w-full bg-white rounded-t-[40px] flex items-center flex-col pb-12">
+        <div className="min-w-[855px]">
+          <LandingProgress />
+          <div className="text-2xl font-semibold mb-6">Special Properties</div>
+          <div className="grid grid-cols-4 gap-6">
+            <PropertyCard {...mockHotel} />
+            <PropertyCard {...mockHotel} />
+            <PropertyCard {...mockHotel} />
+            <PropertyCard {...mockHotel} />
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
