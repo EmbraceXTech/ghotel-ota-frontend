@@ -4,7 +4,7 @@ import HeaderRightBg from "../Icons/HeaderRightBg";
 
 export default function LandingHeader() {
   return (
-    <div className="bg-brand w-full h-[200px] flex items-center flex-col pt-10 relative -z-10">
+    <div className="bg-brand w-full h-[200px] flex items-center flex-col pt-10 relative">
       <HeaderLeftBg />
       <HeaderRightBg />
     </div>
