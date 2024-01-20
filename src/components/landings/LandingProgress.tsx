@@ -1,6 +1,4 @@
 import React from "react";
-import { Progress } from "@nextui-org/react";
-import Image from "next/image";
 import FilterList from "../search/FilterList";
 
 export default function LandingProgress() {

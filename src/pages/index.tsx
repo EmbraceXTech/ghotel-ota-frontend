@@ -1,7 +1,6 @@
 import LandingProgress from "@/components/landings/LandingProgress";
 import LandingHeader from "@/components/landings/LandingHeader";
 import PropertyCard from "@/components/property/PropertyCard";
-import FilterList from "@/components/search/FilterList";
 
 export default function Home() {
   const mockHotel = {
@@ -14,7 +13,7 @@ export default function Home() {
   return (
     <div>
       <LandingHeader />
-      <div className="w-full bg-white rounded-t-[40px] flex items-center flex-col pb-12">
+      <div className="w-full bg-white rounded-t-[40px] flex items-center flex-col pb-12 mt-[-35px]">
         <div className="min-w-[855px]">
           <LandingProgress />
           <div className="text-2xl font-semibold mb-6">Special Properties</div>
