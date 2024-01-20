@@ -7,6 +7,8 @@ import {
   Image,
 } from "@nextui-org/react";
 import { StarIcon } from "../Icons/Star";
+import { useRouter } from "next/router";
+import { toDashCase } from "@/utils/string.util";
 
 interface PropertyCardProps {
   name: string;
@@ -23,13 +25,13 @@ export default function PropertyCard({
   review,
   price,
 }: PropertyCardProps) {
+  const router = useRouter();
   return (
     <div>
-      {/* <Image src="/hotel/1.jpg" alt="hotel1" /> */}
       <Card
         shadow="sm"
         isPressable
-        onPress={() => console.log("item pressed")}
+        onPress={() => router.push(`${router.asPath}/${toDashCase(name)}`)}
         className="w-[300px]"
       >
         <CardHeader className="overflow-visible p-0">

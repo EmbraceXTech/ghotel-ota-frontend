@@ -1,7 +1,7 @@
 import { Button } from "@nextui-org/react";
-import CountrySelect from "./Country";
-import DateSelect from "./Date";
-import PeopleSelect from "./People";
+import CountrySelect from "../select/Country";
+import DateSelect from "../select/Date";
+import PeopleSelect from "../select/People";
 import { SearchIcon } from "../Icons/Search";
 
 export default function FilterList() {

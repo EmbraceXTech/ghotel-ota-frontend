@@ -1,6 +1,6 @@
-import LandingProgress from "@/components/landings/LandingProgress";
-import LandingHeader from "@/components/landings/LandingHeader";
 import PropertyCard from "@/components/property/PropertyCard";
+import { BackgroundLayout } from "@/components/layouts/BackgroundLayout";
+import FilterList from "@/components/property/PropertyFilterList";
 
 export default function Home() {
   const mockHotel = {
@@ -11,20 +11,17 @@ export default function Home() {
     price: 9135,
   };
   return (
-    <div>
-      <LandingHeader />
-      <div className="w-full bg-white rounded-t-[40px] flex items-center flex-col pb-12 mt-[-35px]">
-        <div className="min-w-[855px]">
-          <LandingProgress />
-          <div className="text-2xl font-semibold mb-6">Special Properties</div>
-          <div className="grid grid-cols-4 gap-6">
-            <PropertyCard {...mockHotel} />
-            <PropertyCard {...mockHotel} />
-            <PropertyCard {...mockHotel} />
-            <PropertyCard {...mockHotel} />
-          </div>
-        </div>
+    <BackgroundLayout>
+      <div className="w-full h-fit bg-white border rounded-lg -mt-[50px] mb-[50px] shadow-md py-5 px-7">
+        <FilterList />
       </div>
-    </div>
+      <div className="text-2xl font-semibold mb-6">Special Properties</div>
+      <div className="grid grid-cols-4 gap-6">
+        <PropertyCard {...mockHotel} />
+        <PropertyCard {...mockHotel} />
+        <PropertyCard {...mockHotel} />
+        <PropertyCard {...mockHotel} />
+      </div>
+    </BackgroundLayout>
   );
 }
