@@ -37,7 +37,7 @@ export default function PropertyBookingPrice({
       <div className="flex justify-between items-center">
         <div className="font-semibold">Final Price</div>
         <div className="text-xl font-bold">
-          ${(price * durations * +rooms - pbmPrice).toLocaleString()} + {pbmPrice.toLocaleString()} PBM
+          ${(price * durations * +rooms - pbmPrice).toLocaleString()}
         </div>
       </div>
     </div>

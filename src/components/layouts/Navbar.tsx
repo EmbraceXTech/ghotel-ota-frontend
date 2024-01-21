@@ -10,9 +10,9 @@ export default function Navbar() {
     <div className="flex items-center w-full min-h-20 bg-white px-[150px] justify-between border-b">
       <div className="cursor-pointer" onClick={() => router.replace("/")}>
         <Image
-          src="/ghotelLogo.svg"
-          width={109}
-          height={36}
+          src="/ghota.png"
+          width={110}
+          height={50}
           alt="ghotel trip logo"
         />
       </div>

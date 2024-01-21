@@ -13,6 +13,7 @@ import { usePropertyFilter } from "@/stores/propertyFilter.store";
 import { formatDateWithOutTime } from "@/utils/date.util";
 
 interface PropertyCardProps {
+  dataType: "hotel" | "flight";
   name: string;
   location: string;
   rating: number;
@@ -21,6 +22,7 @@ interface PropertyCardProps {
 }
 
 export default function PropertyCard({
+  dataType,
   name,
   location,
   rating,
@@ -56,7 +58,7 @@ export default function PropertyCard({
             width="300px"
             alt={name}
             className="w-full object-cover h-[200px]"
-            src={`/hotel/${toDashCase(name ?? '')}.jpg`}
+            src={`/${dataType}/${toDashCase(name ?? "")}.jpg`}
           />
         </CardHeader>
         <CardBody className="">
@@ -79,7 +81,7 @@ export default function PropertyCard({
         </CardBody>
         <CardFooter className="justify-end space-x-1">
           <div className="text-[#A3A3A3] text-xs font-medium pt-1">Price</div>
-          <div className="text-xl font-bold">THB {price.toLocaleString()}</div>
+          <div className="text-xl font-bold">${price.toLocaleString()}</div>
         </CardFooter>
       </Card>
     </div>
