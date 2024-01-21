@@ -3,7 +3,7 @@ import { WagmiConfig, createConfig, sepolia } from "wagmi";
 
 const chains = [sepolia];
 
-const config = createConfig(
+export const config = createConfig(
   getDefaultConfig({
     walletConnectProjectId: process.env.WALLETCONNECT_PROJECT_ID || "",
     chains,

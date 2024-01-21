@@ -1,6 +1,9 @@
+import { payWithVoucher } from "@/services/paymet.service";
 import BookingModal from "./BookingModal";
 import { Button, Checkbox, useDisclosure } from "@nextui-org/react";
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
+import { useAccount, useNetwork } from "wagmi";
+import { parseEther } from "viem";
 
 // TODO: transcationHash
 // TODO: press button to execute sign the signature
@@ -22,12 +25,27 @@ export default function PropertyBookingAction({
 
   const [modalStatus, setModalStatus] = useState<"loading" | "success" | "error">("loading");
 
+  const chainId = useNetwork();
+  const account = useAccount();
+
   const { _price, _voucher } = useMemo(() => {
     const _price = Math.floor(price * durations * rooms * 0.6);
     const _voucher = Math.floor(price * durations * rooms * 0.4);
 
     return { _price, _voucher };
   }, [durations, price, rooms]);
+
+  const handlePay = useCallback(async () => {
+    if (chainId && chainId.chain && account && account.address) {
+      const _fee = (_price + _voucher) * 0.05;
+
+      const voucherId = BigInt(0); // Hotel voucher
+      const price = parseEther(_price.toString());
+      const voucher = parseEther(_voucher.toString());
+      const fee = parseEther(_fee.toString())
+      const tx = await payWithVoucher(chainId.chain.id, account.address, account.address, account.address, voucherId, price,  voucher,  fee);
+    }
+  }, [onOpenLoading, chainId, account]);
 
   return (
     <div className="w-full bg-white px-6 py-8 space-y-3 rounded-xl">
@@ -38,7 +56,7 @@ export default function PropertyBookingAction({
       <Button
         color="primary"
         className="w-full font-bold"
-        onPress={onOpenLoading}
+        onPress={handlePay}
       >
         Pay GHO {_price.toLocaleString()} + PBM {_voucher.toLocaleString()}
       </Button>
