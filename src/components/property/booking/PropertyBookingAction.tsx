@@ -43,7 +43,11 @@ export default function PropertyBookingAction({
       const price = parseEther(_price.toString());
       const voucher = parseEther(_voucher.toString());
       const fee = parseEther(_fee.toString())
-      const tx = await payWithVoucher(chainId.chain.id, account.address, account.address, account.address, voucherId, price,  voucher,  fee);
+
+      const hotelAddress = "0x320a8FFfaF8068Bff76ab373015723441Bc15521";
+      const otaAddress = "0x0D4Db0105b81A4F5b041d7aC1c8D82884EB9384a";
+
+      const tx = await payWithVoucher(chainId.chain.id, account.address, hotelAddress, otaAddress, voucherId, price,  voucher,  fee);
     }
   }, [onOpenLoading, chainId, account]);
 

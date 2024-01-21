@@ -14,7 +14,7 @@ export const payWithVoucher = async (chainId: number, from: `0x${string}`, hotel
         const paymentContract = PaymentContract(chainId)
     
         const currentNonce = await readContract(getPublicClient(), { address: ghoContract.address, abi: ghoContract.abi, functionName: "nonces", args: [from] });
-        const nonce = currentNonce + BigInt(1)
+        const nonce = currentNonce;
         const deadline = Math.floor((new Date().valueOf() + 60 * 60 * 1000) / 1000);
     
         const domain = {

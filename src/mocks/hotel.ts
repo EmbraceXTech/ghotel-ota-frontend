@@ -5,7 +5,7 @@ const HOTEL_LISTS = [
     location: "Panwa cape, Phuket",
     rating: 4.5,
     review: 82,
-    price: 9135,
+    price: 300,
   },
   {
     id: 2,
@@ -13,7 +13,7 @@ const HOTEL_LISTS = [
     location: "Kaset Nawamin, Bangkok",
     rating: 4.0,
     review: 22,
-    price: 3135,
+    price: 100,
   },
   {
     id: 3,
@@ -21,7 +21,7 @@ const HOTEL_LISTS = [
     location: "Huai Khwang, Bangkok",
     rating: 5.0,
     review: 52,
-    price: 7100,
+    price: 200,
   },
 ];
 
@@ -33,7 +33,7 @@ const HOTEL_DETAIL_LISTS = [
     location: "Panwa cape, Phuket",
     rating: 4.5,
     review: 82,
-    price: 9135,
+    price: 300,
   },
   {
     id: 2,
@@ -41,7 +41,7 @@ const HOTEL_DETAIL_LISTS = [
     location: "Kaset Nawamin, Bangkok",
     rating: 4.0,
     review: 22,
-    price: 3135,
+    price: 100,
   },
   {
     id: 3,
@@ -49,7 +49,7 @@ const HOTEL_DETAIL_LISTS = [
     location: "Huai Khwang, Bangkok",
     rating: 5.0,
     review: 52,
-    price: 7100,
+    price: 200,
   },
 ];
 
