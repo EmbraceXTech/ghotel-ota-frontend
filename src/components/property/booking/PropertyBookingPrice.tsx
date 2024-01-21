@@ -1,4 +1,5 @@
 import { useStore } from "@/stores/base.store";
+import { useRouter } from "next/router";
 import { useMemo } from "react";
 
 interface PropertyBookingPriceProps {
@@ -12,6 +13,9 @@ export default function PropertyBookingPrice({
   durations,
   price,
 }: PropertyBookingPriceProps) {
+  const { query } = useRouter();
+  const isFlight = query.hotel?.includes("air");
+
   const { usePBM } = useStore();
 
   const pbmPrice = useMemo(() => {
@@ -23,7 +27,8 @@ export default function PropertyBookingPrice({
       <div className="space-y-2">
         <div className="flex justify-between">
           <div>
-            {rooms} room x {durations} night
+            {isFlight ? "" : rooms} {isFlight ? "" : "room"} x {durations}{" "}
+            {isFlight ? "Ticket" : "night"}
           </div>
           <div>${(price * durations * +rooms).toLocaleString()}</div>
         </div>

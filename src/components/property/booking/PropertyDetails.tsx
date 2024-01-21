@@ -3,6 +3,7 @@ import { Image } from "@nextui-org/react";
 import { CounterTopIcon } from "@/components/Icons/facilities";
 import RatingSet from "@/components/ui/RatingSet";
 import { toDashCase } from "@/utils/string.util";
+import { useRouter } from "next/router";
 
 interface PropertyDetailsProps {
   name?: string;
@@ -15,11 +16,19 @@ interface PropertyDetailsProps {
   // }[];
 }
 
-export default function PropertyDetails({ name, propertyType, rating, location }: PropertyDetailsProps) {
+export default function PropertyDetails({
+  name,
+  propertyType,
+  rating,
+  location,
+}: PropertyDetailsProps) {
+  const { query } = useRouter();
+  const isFlight = query.hotel?.includes("air");
+
   const facilities = [
     {
       icons: <CounterTopIcon />,
-      label: "1 rooms",
+      label: `1 ${isFlight ? "Ticket" : "Room"}`,
     },
   ];
   return (
@@ -30,7 +39,7 @@ export default function PropertyDetails({ name, propertyType, rating, location }
         height={200}
         alt={name}
         className="w-full object-cover rounded-md"
-        src={`/hotel/${toDashCase(name ?? '')}.jpg`}
+        src={`/${isFlight ? "flight" : "hotel"}/${toDashCase(name ?? "")}.jpg`}
       />
       <div>
         <div className="flex space-x-1">
