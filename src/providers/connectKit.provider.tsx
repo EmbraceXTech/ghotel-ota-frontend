@@ -22,7 +22,7 @@ export default function ConnectKitProviderWrapper({
 }) {
   return (
     <WagmiConfig config={config}>
-      <ConnectKitProvider>{children}</ConnectKitProvider>
+      <ConnectKitProvider theme="nouns">{children}</ConnectKitProvider>
     </WagmiConfig>
   );
 }
