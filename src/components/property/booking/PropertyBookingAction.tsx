@@ -4,6 +4,7 @@ import { Button, Checkbox, useDisclosure } from "@nextui-org/react";
 import { useCallback, useMemo, useState } from "react";
 import { useAccount, useNetwork } from "wagmi";
 import { parseEther } from "viem";
+import { useStore } from "@/stores/base.store";
 
 // TODO: transcationHash
 // TODO: press button to execute sign the signature
@@ -27,16 +28,20 @@ export default function PropertyBookingAction({
     "loading" | "success" | "error"
   >("loading");
 
+  const { usePBM, setUsePBM } = useStore((state) => state);
+
   const chainId = useNetwork();
   const account = useAccount();
   const [txHash, setTxHash] = useState("");
 
   const { _price, _voucher } = useMemo(() => {
-    const _price = Math.floor(price * durations * rooms * 0.6);
-    const _voucher = Math.floor(price * durations * rooms * 0.4);
+    const _price = Math.floor(price * durations * rooms * (usePBM ? 0.6 : 1.0));
+    const _voucher = Math.floor(
+      price * durations * rooms * (usePBM ? 0.4 : 0.0)
+    );
 
     return { _price, _voucher };
-  }, [durations, price, rooms]);
+  }, [durations, price, rooms, usePBM]);
 
   const handlePay = useCallback(async () => {
     onOpenLoading();
@@ -71,11 +76,16 @@ export default function PropertyBookingAction({
 
   return (
     <div className="w-full bg-white px-6 py-8 space-y-3 rounded-xl">
-      <Checkbox defaultSelected classNames={{ label: "text-sm font-medium" }}>
+      <Checkbox
+        checked={usePBM}
+        onChange={() => setUsePBM(!usePBM)}
+        defaultSelected
+        classNames={{ label: "text-sm font-medium" }}
+      >
         Use TravelPBM Ticket
       </Checkbox>
       <Button color="primary" className="w-full font-bold" onPress={handlePay}>
-        Pay GHO {_price.toLocaleString()} + PBM {_voucher.toLocaleString()}
+        Pay {_price.toLocaleString()} GHO
       </Button>
       <BookingModal
         isOpen={isOpenLoading}

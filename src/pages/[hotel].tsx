@@ -5,6 +5,7 @@ import PropertyBookingInformation from "@/components/property/booking/PropertyBo
 import PropertyBookingPrice from "@/components/property/booking/PropertyBookingPrice";
 import PropertyDetails from "@/components/property/booking/PropertyDetails";
 import { HOTEL_DETAIL_LISTS } from "@/mocks/hotel";
+import { useStore } from "@/stores/base.store";
 import { diffDate } from "@/utils/date.util";
 import { toDashCase } from "@/utils/string.util";
 import { useRouter } from "next/router";

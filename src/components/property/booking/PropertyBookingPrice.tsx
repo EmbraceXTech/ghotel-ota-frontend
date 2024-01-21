@@ -1,3 +1,4 @@
+import { useStore } from "@/stores/base.store";
 import { useMemo } from "react";
 
 interface PropertyBookingPriceProps {
@@ -11,9 +12,11 @@ export default function PropertyBookingPrice({
   durations,
   price,
 }: PropertyBookingPriceProps) {
+  const { usePBM } = useStore();
+
   const pbmPrice = useMemo(() => {
-    return Math.floor(price * durations * +rooms * 0.4);
-  }, [price, durations, rooms]);
+    return Math.floor(price * durations * +rooms * (usePBM ? 0.4 : 0.0));
+  }, [price, durations, rooms, usePBM]);
   return (
     <div className="w-full bg-white px-6 py-4 rounded-xl font-medium text-sm h-fit">
       <div className="font-semibold text-base mb-4">Price details</div>
